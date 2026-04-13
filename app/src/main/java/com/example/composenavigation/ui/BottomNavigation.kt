@@ -27,13 +27,11 @@ fun BottomNavBar(navController: NavHostController) {
                 selected = currentDestination?.route == screen.route,
                 onClick = {
                     navController.navigate(screen.route) {
-
-                        launchSingleTop = true
-                        restoreState = true
-
-                        popUpTo("home_graph") {
+                        popUpTo(navController.graph.findStartDestination().id) {
                             saveState = true
                         }
+                        launchSingleTop = true
+                        restoreState = true
                     }
                 },
                 label = { Text(screen.route) },
